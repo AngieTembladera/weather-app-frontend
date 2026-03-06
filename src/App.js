@@ -9,10 +9,7 @@ import FooterInfo from './components/FooterInfo';
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-function formatNumber(v, digits = 0) {
-  if (v == null) return '—';
-  return Number(v).toFixed(digits).replace(/\.0+$/, '');
-}
+
 
 function getIconUrl(iconCode) {
   if (!iconCode) return null;
@@ -43,7 +40,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [lastUpdate, setLastUpdate] = useState('');
 
-  // Fetch default city on mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchDefault = async () => {
       const defaultCity = 'Lima';
