@@ -40,7 +40,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [lastUpdate, setLastUpdate] = useState('');
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchDefault = async () => {
       const defaultCity = 'Lima';
@@ -49,7 +48,7 @@ function App() {
       await executeSearch(defaultCity);
     };
     fetchDefault();
-  }, []);
+  }, [executeSearch]);
 
   const handleSearch = async (e) => {
     if (e && e.preventDefault) e.preventDefault();
