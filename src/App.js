@@ -6,6 +6,9 @@ import AirQualityCard from './components/AirQualityCard';
 import TechnicalDetails from './components/TechnicalDetails';
 import FooterInfo from './components/FooterInfo';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 function formatNumber(v, digits = 0) {
   if (v == null) return '—';
   return Number(v).toFixed(digits).replace(/\.0+$/, '');
@@ -63,7 +66,7 @@ function App() {
     try {
       let weatherData = null;
       try {
-        const weatherRes = await fetch(`/api/weather?city=${encodeURIComponent(targetCity)}`);
+        const weatherRes = await fetch(`${API_URL}/api/weather?city=${encodeURIComponent(targetCity)}`);
         weatherData = await weatherRes.json();
 
         if (!weatherRes.ok) {
@@ -83,8 +86,8 @@ function App() {
 
       // Fetch OneCall and Air Quality in parallel
       const [onecallRes, airRes] = await Promise.all([
-        fetch(`/api/onecall?lat=${lat}&lon=${lon}&city=${encodeURIComponent(targetCity)}`),
-        fetch(`/api/air-quality?lat=${lat}&lon=${lon}&city=${encodeURIComponent(targetCity)}`)
+        fetch(`${API_URL}/api/onecall?lat=${lat}&lon=${lon}&city=${encodeURIComponent(targetCity)}`),
+        fetch(`${API_URL}/api/air-quality?lat=${lat}&lon=${lon}&city=${encodeURIComponent(targetCity)}`)
       ]);
 
       const onecallData = await onecallRes.json();
