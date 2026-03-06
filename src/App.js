@@ -40,22 +40,6 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [lastUpdate, setLastUpdate] = useState('');
 
-  useEffect(() => {
-    const fetchDefault = async () => {
-      const defaultCity = 'Lima';
-      setCity(defaultCity);
-      setLoading(true);
-      await executeSearch(defaultCity);
-    };
-    fetchDefault();
-  }, [executeSearch]);
-
-  const handleSearch = async (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    if (!city) return setError('Por favor ingresa una ciudad');
-    setLoading(true);
-    await executeSearch(city);
-  };
 
   const executeSearch = async (targetCity) => {
     setError('');
@@ -131,6 +115,25 @@ function App() {
       setLoading(false);
     }
   };
+  const handleSearch = async (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (!city) return setError('Por favor ingresa una ciudad');
+    setLoading(true);
+    await executeSearch(city);
+  };
+
+  useEffect(() => {
+    const fetchDefault = async () => {
+      const defaultCity = 'Lima';
+      setCity(defaultCity);
+      setLoading(true);
+      await executeSearch(defaultCity);
+    };
+
+    fetchDefault();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   return (
     <div className="min-h-screen transition-all duration-700 pb-20">
