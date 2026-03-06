@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom styles for Weather app */
+.sr-only {
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap; /* added line */
+}
+
+/* Small subtle card shadow override for consistent look */
+.weather-card {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* Make input focus rings more visible on non-tailwind builds */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.12);
+  border-color: rgba(59,130,246,0.6);
+}
+
+/* App hero background (sutil gradiente) */
+.app-hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #fff7ed 100%);
+}
+
+/* Accent for the main container when tailwind utilities aren't enough */
+.bg-accent {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,250,255,0.9));
+}
+
+/* Small tweaks for images/icons */
+img[alt] {
+  display: block;
+}
